@@ -1,0 +1,20 @@
+.DS_Store
+*.log
+
+# Backend
+Backend/.env
+Backend/bin/
+Backend/dist/
+Backend/vendor/
+Backend/.idea/
+Backend/.vscode/
+
+# Frontend
+Frontend/node_modules/
+Frontend/.next/
+Frontend/out/
+Frontend/build/
+Frontend/.vercel/
+Frontend/.env*
+Frontend/*.tsbuildinfo
+Frontend/coverage/

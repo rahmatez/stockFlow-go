@@ -1,0 +1,3 @@
+CREATE SEQUENCE IF NOT EXISTS order_number_seq START 1000;
+
+ALTER TABLE tenants DROP COLUMN IF EXISTS order_seq;

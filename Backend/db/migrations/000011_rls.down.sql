@@ -1,0 +1,19 @@
+DROP POLICY IF EXISTS tenant_isolation_products ON products;
+DROP POLICY IF EXISTS tenant_isolation_categories ON categories;
+DROP POLICY IF EXISTS tenant_isolation_customers ON customers;
+DROP POLICY IF EXISTS tenant_isolation_orders ON orders;
+DROP POLICY IF EXISTS tenant_isolation_order_items ON order_items;
+DROP POLICY IF EXISTS tenant_isolation_warehouses ON warehouses;
+DROP POLICY IF EXISTS tenant_isolation_stock_levels ON stock_levels;
+DROP POLICY IF EXISTS tenant_isolation_inventory_movements ON inventory_movements;
+DROP POLICY IF EXISTS tenant_isolation_notifications ON notifications;
+
+ALTER TABLE products DISABLE ROW LEVEL SECURITY;
+ALTER TABLE categories DISABLE ROW LEVEL SECURITY;
+ALTER TABLE customers DISABLE ROW LEVEL SECURITY;
+ALTER TABLE orders DISABLE ROW LEVEL SECURITY;
+ALTER TABLE order_items DISABLE ROW LEVEL SECURITY;
+ALTER TABLE warehouses DISABLE ROW LEVEL SECURITY;
+ALTER TABLE stock_levels DISABLE ROW LEVEL SECURITY;
+ALTER TABLE inventory_movements DISABLE ROW LEVEL SECURITY;
+ALTER TABLE notifications DISABLE ROW LEVEL SECURITY;

@@ -1,0 +1,112 @@
+openapi: 3.0.3
+info:
+  title: OMS SaaS Mini API
+  version: 1.0.0
+  description: Inventory & Order Management System REST API
+servers:
+  - url: http://localhost:8080/api/v1
+paths:
+  /health:
+    get:
+      summary: Health check
+      responses:
+        '200':
+          description: OK
+  /auth/register:
+    post:
+      summary: Register tenant and owner user
+      tags: [Auth]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [tenant_name, email, password, full_name]
+              properties:
+                tenant_name: { type: string }
+                email: { type: string }
+                password: { type: string }
+                full_name: { type: string }
+      responses:
+        '201':
+          description: Created
+  /auth/login:
+    post:
+      summary: Login
+      tags: [Auth]
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password]
+              properties:
+                email: { type: string }
+                password: { type: string }
+      responses:
+        '200':
+          description: OK
+  /products:
+    get:
+      summary: List products
+      tags: [Products]
+      security: [{ bearerAuth: [] }]
+      parameters:
+        - name: page
+          in: query
+          schema: { type: integer }
+        - name: limit
+          in: query
+          schema: { type: integer }
+        - name: search
+          in: query
+          schema: { type: string }
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create product
+      tags: [Products]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '201':
+          description: Created
+  /orders:
+    get:
+      summary: List orders
+      tags: [Orders]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200':
+          description: OK
+    post:
+      summary: Create order
+      tags: [Orders]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '201':
+          description: Created
+  /reports/dashboard:
+    get:
+      summary: Dashboard stats
+      tags: [Reports]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200':
+          description: OK
+  /billing/plan:
+    get:
+      summary: Get subscription and usage
+      tags: [Billing]
+      security: [{ bearerAuth: [] }]
+      responses:
+        '200':
+          description: OK
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT

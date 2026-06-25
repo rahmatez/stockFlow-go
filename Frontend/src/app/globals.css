@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #f1f5f9;
+  --foreground: #1e293b;
+  --card: #ffffff;
+  --border: #e2e8f0;
+  --border-subtle: #f1f5f9;
+  --muted: #64748b;
+  --muted-light: #94a3b8;
+  --surface-muted: #f8fafc;
+  --surface-hover: #f8fafc;
+  --primary: #3c50e0;
+  --primary-hover: #2f3eb8;
+  --primary-light: #ecf3ff;
+  --primary-muted: #eef2ff;
+  --ring-accent: #dbeafe;
+  --input-bg: #ffffff;
+  --input-bg-muted: #f8fafc;
+  --danger-bg: #fef2f2;
+  --danger-border: #fecaca;
+  --danger-text: #b91c1c;
+  --success-bg: #ecfdf5;
+  --success-text: #10b981;
+  --radius: 0.75rem;
+}
+
+.dark {
+  --background: #0f172a;
+  --foreground: #f1f5f9;
+  --card: #1e293b;
+  --border: #334155;
+  --border-subtle: #334155;
+  --muted: #94a3b8;
+  --muted-light: #64748b;
+  --surface-muted: #1e293b;
+  --surface-hover: #334155;
+  --primary: #6366f1;
+  --primary-hover: #4f46e5;
+  --primary-light: #1e3a5f;
+  --primary-muted: #172554;
+  --ring-accent: #1e3a5f;
+  --input-bg: #1e293b;
+  --input-bg-muted: #0f172a;
+  --danger-bg: #450a0a;
+  --danger-border: #7f1d1d;
+  --danger-text: #fca5a5;
+  --success-bg: #064e3b;
+  --success-text: #34d399;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-border: var(--border);
+  --color-border-subtle: var(--border-subtle);
+  --color-muted: var(--muted);
+  --color-muted-light: var(--muted-light);
+  --color-surface-muted: var(--surface-muted);
+  --color-surface-hover: var(--surface-hover);
+  --color-primary-brand: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-light: var(--primary-light);
+  --color-primary-muted: var(--primary-muted);
+  --color-ring-accent: var(--ring-accent);
+  --color-input-bg: var(--input-bg);
+  --color-input-bg-muted: var(--input-bg-muted);
+  --color-danger-bg: var(--danger-bg);
+  --color-danger-border: var(--danger-border);
+  --color-danger-text: var(--danger-text);
+  --color-success-bg: var(--success-bg);
+  --color-success-text: var(--success-text);
+  --font-sans: var(--font-inter);
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--border) transparent;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background: var(--primary-light);
+  color: var(--foreground);
+}
+
+@keyframes fade-in {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.35s ease-out forwards;
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--surface-muted) 25%,
+    var(--border) 50%,
+    var(--surface-muted) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
